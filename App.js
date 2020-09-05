@@ -11,6 +11,10 @@ export default function App() {
     { text: "Todo3", key: "3" },
   ]);
 
+  const handlerPress = (key) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.key != key));
+  };
+
   return (
     <View style={styles.container}>
       <Header />
@@ -20,7 +24,9 @@ export default function App() {
         <View style={styles.list}>
           <FlatList
             data={todos}
-            renderItem={({ item }) => <TodoItem item={item} />}
+            renderItem={({ item }) => (
+              <TodoItem item={item} handlerPress={handlerPress} />
+            )}
           />
         </View>
       </View>
