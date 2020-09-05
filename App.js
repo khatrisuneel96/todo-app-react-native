@@ -6,22 +6,17 @@ import TodoItem from "./app/screens/TodoItem";
 import AddTodo from "./app/screens/AddTodo";
 
 export default function App() {
-  const [todos, setTodos] = useState([
-    { text: "Todo1", key: "1" },
-    { text: "Todo2", key: "2" },
-    { text: "Todo3", key: "3" },
-  ]);
+  const [todos, setTodos] = useState([]);
 
   const handlerPress = (key) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.key != key));
   };
 
   const submitHandler = (text) => {
-    setTodos(
-      (prevTodos) => (
-        { text: text, key: Math.random().toString() }, [...prevTodos]
-      )
-    );
+    setTodos((prevTodos) => [
+      { text: text, key: Math.random().toString() },
+      ...prevTodos,
+    ]);
   };
 
   return (
@@ -30,6 +25,9 @@ export default function App() {
       <View style={styles.content}>
         <AddTodo submitHandler={submitHandler} />
         <View style={styles.list}>
+          {todos.length === 0 && (
+            <Text style={styles.empty}>Nothing To Do!</Text>
+          )}
           <FlatList
             data={todos}
             renderItem={({ item }) => (
@@ -53,5 +51,17 @@ const styles = StyleSheet.create({
   },
   list: {
     marginTop: 20,
+  },
+  empty: {
+    padding: 16,
+    marginTop: 16,
+    fontStyle: "italic",
+    fontSize: 20,
+    color: "#bbb",
+    textAlign: "center",
+    borderWidth: 1,
+    borderColor: "#bbb",
+    borderRadius: 10,
+    borderStyle: "dashed",
   },
 });
