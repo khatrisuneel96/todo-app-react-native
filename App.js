@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import Header from "./app/screens/Header";
+import TodoItem from "./app/screens/TodoItem";
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -19,7 +20,7 @@ export default function App() {
         <View style={styles.list}>
           <FlatList
             data={todos}
-            renderItem={({ item }) => <Text>{item.text}</Text>}
+            renderItem={({ item }) => <TodoItem item={item} />}
           />
         </View>
       </View>
