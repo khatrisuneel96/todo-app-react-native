@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import Header from "./app/screens/Header";
 import TodoItem from "./app/screens/TodoItem";
+import AddTodo from "./app/screens/AddTodo";
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -19,7 +20,7 @@ export default function App() {
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
-        {/* Todo form */}
+        <AddTodo />
 
         <View style={styles.list}>
           <FlatList
