@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
     padding: 40,
   },
   list: {
-    marginTop: 10,
+    marginTop: 20,
   },
 });
