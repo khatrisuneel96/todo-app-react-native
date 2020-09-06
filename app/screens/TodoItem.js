@@ -5,10 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 export default function TodoItem({ item, handlerPress }) {
   return (
     <View style={styles.item}>
-      <TouchableOpacity
-        style={styles.delete}
-        onPress={() => handlerPress(item.key)}
-      >
+      <TouchableOpacity onPress={() => handlerPress(item.key)}>
         <AntDesign name="delete" size={20} color="#333" />
       </TouchableOpacity>
       <Text style={styles.itemText}>{item.text}</Text>
